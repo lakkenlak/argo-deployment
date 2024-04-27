@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-deployment-app
+spec:
+  selector:
+    matchLabels:
+      app: argo-deployment-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: argo-deployment-app
+    spec:
+      containers:
+        - name: argo-deployment-app
+          image: lakkenlak/argo-deployment-app:latest
+          ports:
+            - containerPort: 3000
