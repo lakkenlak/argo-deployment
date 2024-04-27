@@ -1,0 +1,20 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: argo-deployment-app-ingress
+spec:
+  tls:
+    - hosts:
+        - test.kany.dev
+      secretName: kanydev
+  rules:
+    - host: test.kany.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argo-deployment-app
+                port:
+                  number: 3000
